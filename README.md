@@ -7,7 +7,7 @@
 
 
 每个项目的具体路径为 <br />
-/Exp-1/expx/src/main/java/com/example/路径下(expx代表exp1,exp2,exp3,exp4,exp5) <br />
+/Exp-1/expx/src/main/java/com/example/路径下(expx中x=1,2,3,4) <br />
 
 
 项目结构说明：<br />
@@ -30,5 +30,5 @@ Run/Run3.java---实现实验1题目3的运行结果 <br />
 Run/Run4.java---实现实验1题目4的运行结果 <br />
 Run/Runx.java---杂项文件 <br />
 entity/Student.java---定义学生实体类 <br />
-demo/DemoApplication---项目的入口主程序，调用Runx.Runx()方法来运行(x=1,2,3,4,5) <br />
+demo/DemoApplication---项目的入口主程序，调用Runx.Runx()方法来运行(x=1,2,3,4) <br />
 Data/*---项目的数据文件 <br />
