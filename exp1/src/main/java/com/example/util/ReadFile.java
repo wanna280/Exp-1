@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class ReadFile {
     public static ArrayList<Student> ReadTxt() {
         ArrayList<Student> studentList = new ArrayList<>();
-        String filePath = "src/main/java/com/example/util/data.txt";
+        String filePath = "src/main/java/com/example/Data/data.txt";
         File file = new File(filePath);
         InputStreamReader reader = null;
         try {
@@ -89,7 +89,7 @@ public class ReadFile {
     public static ArrayList<Student> ReadCsv() {
 
         ArrayList<Student> studentList = new ArrayList<>();
-        String filePath = "src/main/java/com/example/util/data.csv";
+        String filePath = "src/main/java/com/example/Data/data.csv";
         File file = new File(filePath);
         InputStreamReader reader = null;
         try {
