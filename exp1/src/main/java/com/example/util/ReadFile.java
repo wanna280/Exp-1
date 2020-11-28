@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 public class ReadFile {
     public static ArrayList<Student> ReadTxt(String filePath) {
-        ArrayList<Student> studentList = new ArrayList<>();
-        File file = new File(filePath);
+        ArrayList<Student> studentList = new ArrayList<>();   //创建一个学生列表ArrayList
+        File file = new File(filePath);   //打开文件
         InputStreamReader reader = null;
         try {
             reader = new InputStreamReader(new FileInputStream(file), "utf-8");
@@ -21,11 +21,11 @@ public class ReadFile {
         BufferedReader bufferedReader = new BufferedReader(reader);
 
         try {
-            bufferedReader.readLine();
+            bufferedReader.readLine();  //读到的第一行不要（头部）
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);
-                Object[] arr = line.split(",",16);
+                Object[] arr = line.split(",",16);   //利用","进行分割，且限制长度为16避免出现null无法读取
                 Student student = new Student();
                 if (arr[0].toString().isEmpty()==false) {
                     student.setStudentId(arr[0].toString());
@@ -87,7 +87,7 @@ public class ReadFile {
 
     public static ArrayList<Student> ReadCsv(String filePath) {
 
-        ArrayList<Student> studentList = new ArrayList<>();
+        ArrayList<Student> studentList = new ArrayList<>();  //创建一个学生列表ArrayList
         File file = new File(filePath);
         InputStreamReader reader = null;
         try {
@@ -104,7 +104,7 @@ public class ReadFile {
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);
-                Object[] arr = line.split(",",16);
+                Object[] arr = line.split(",",16);  //利用","进行分割，且限制长度为16避免出现null无法读取
                 Student student = new Student();
                 if (arr[0].toString().isEmpty()==false) {
                     student.setId(Integer.parseInt(arr[0].toString()));

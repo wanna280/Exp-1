@@ -11,6 +11,8 @@ public class Run4 {
     public static void Run4() {
         String filePath_csv = "src/main/java/com/example/Data/data.csv";
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
+
+        //传入文件路径，直接读取合并后的文件
         ArrayList<Student> list_students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
 
         ArrayList<Double> arr1 = new ArrayList<>();
@@ -39,15 +41,15 @@ public class Run4 {
             arr11.add(dataProcessing.TransformConstitution(list_students.get(i).getConstitution()));
         }
 
-        System.out.println(dataProcessing.GetCorrelation(arr1, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr2, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr3, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr4, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr5, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr6, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr7, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr8, arr11));
-        System.out.println(dataProcessing.GetCorrelation(arr9, arr11));
+        System.out.println(dataProcessing.GetCorrelation(arr1, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr2, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr3, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr4, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr5, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr6, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr7, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr8, arr11)); //打印相关系数
+        System.out.println(dataProcessing.GetCorrelation(arr9, arr11)); //打印相关系数
         //System.out.println(dataProcessing.GetCorrelation(arr10,arr11));
     }
 }
