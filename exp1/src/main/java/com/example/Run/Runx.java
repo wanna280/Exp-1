@@ -9,7 +9,8 @@ import java.util.HashMap;
 
 public class Runx {
     public void Runx(){
-        ArrayList<Student> list = ReadFile.ReadCsv();
+        String filePath_csv = "src/main/java/com/example/Data/data.csv";
+        ArrayList<Student> list = ReadFile.ReadCsv(filePath_csv);
         ArrayList<Student> arr = new ArrayList<Student>();
         HashMap<String, Double> map = new HashMap<>();
         HashMap<String, ArrayList<Double>> map1 = new HashMap<>();

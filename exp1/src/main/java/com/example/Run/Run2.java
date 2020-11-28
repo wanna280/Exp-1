@@ -9,8 +9,9 @@ import java.util.HashMap;
 
 public class Run2 {
     public static void Run2(){
-        ArrayList<Student> list = ReadFile.ReadCsv();   //读取Csv的内容
-        list.addAll(ReadFile.ReadTxt());  //添加Txt的内容
+        String filePath_csv = "src/main/java/com/example/Data/data.csv";
+        String filePath_txt = "src/main/java/com/example/Data/data.txt";
+        ArrayList<Student> list = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
         ArrayList<Student> arr = new ArrayList<Student>();
         System.out.println(list.size());
         for (int i = 0; i < list.size(); i++) {

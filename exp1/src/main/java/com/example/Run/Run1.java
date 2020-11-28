@@ -9,8 +9,10 @@ import java.util.HashMap;
 
 public class Run1 {
     public static void Run1(){
-        ArrayList<Student> list = ReadFile.ReadCsv();   //读取Csv的内容
-        list.addAll(ReadFile.ReadTxt());  //添加Txt的内容
+        String filePath_csv = "src/main/java/com/example/Data/data.csv";
+        String filePath_txt = "src/main/java/com/example/Data/data.txt";
+        ArrayList<Student> list = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
+
         ArrayList<Student> arr = new ArrayList<Student>();
         HashMap<String, Double> map = new HashMap<>();
         HashMap<String, ArrayList<Double>> map1 = new HashMap<>();
@@ -19,7 +21,7 @@ public class Run1 {
                 arr.add(list.get(i));
             }
         }
-        for (int j = 0; j < arr.size(); j++) {  //遍历arr，将Average、ZScore等放入map1
+        for (int j = 0; j < arr.size(); j++) {  //遍历arr，将Average、ZScore等放入map
             Student t = list.get(j);
             ArrayList<Double> arr1 = new ArrayList<>();
             arr1.add(t.getC1());

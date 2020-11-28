@@ -12,10 +12,10 @@ import java.util.HashMap;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        //Run1.Run1();
+        Run1.Run1();
         //Run2.Run2();
         //Run3.Run3();
-        Run4.Run4();
+        //Run4.Run4();
 
         //SpringApplication.run(DemoApplication.class, args);
     }

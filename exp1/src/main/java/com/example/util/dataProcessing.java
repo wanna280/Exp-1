@@ -52,5 +52,28 @@ public class dataProcessing {
             }
     }
 
+    public static void TransformMtoCm(ArrayList<Student> students){  //转换m to cm
+        for (Student stu:
+             students) {
+            stu.setHeight(stu.getHeight()*100);
+        }
+
+    }
+
+    public static void TransformCmToM(ArrayList<Student> students){  //转换cm to m
+        for (Student stu:
+             students) {
+            stu.setHeight(stu.getHeight()/100);
+        }
+    }
+
+    public static ArrayList<Student> MergeCsvAndTxt(String filePath_csv,String filePath_txt){
+        ArrayList<Student> list = ReadFile.ReadCsv(filePath_csv);   //读取Csv的内容
+        ArrayList<Student> list_txt = ReadFile.ReadCsv(filePath_txt);  //读取txt
+        dataProcessing.TransformMtoCm(list_txt);
+        list.addAll(list_txt);  //添加Txt的内容
+        return list;
+    }
+
 
 }
