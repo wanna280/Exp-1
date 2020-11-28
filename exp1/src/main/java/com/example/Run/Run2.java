@@ -11,20 +11,20 @@ public class Run2 {
     public static void Run2(){
         String filePath_csv = "src/main/java/com/example/Data/data.csv";
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
-        ArrayList<Student> list = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
+        ArrayList<Student> list_students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
         ArrayList<Student> arr = new ArrayList<Student>();
-        System.out.println(list.size());
-        for (int i = 0; i < list.size(); i++) {
-            //System.out.println(list.get(i).getName()+ "-" + list.get(i).getCity()+"-"+ list.get(i).getGender() + "-" + list.get(i).getC1()+ "-" +list.get(i).getC9());
-            if (list.get(i).getCity().equals("Guangzhou")
-                    &&list.get(i).getC1()>=80.0
-                    &&list.get(i).getC9()>=9.0
-                    &&(list.get(i).getGender().equals("boy")||list.get(i).getGender().equals("male"))
+        System.out.println(list_students.size());
+        for (int i = 0; i < list_students.size(); i++) {
+            //System.out.println(list_students.get(i).getName()+ "-" + list_students.get(i).getCity()+"-"+ list_students.get(i).getGender() + "-" + list_students.get(i).getC1()+ "-" +list_students.get(i).getC9());
+            if (list_students.get(i).getCity().equals("Guangzhou")
+                    &&list_students.get(i).getC1()>=80.0
+                    &&list_students.get(i).getC9()>=9.0
+                    &&(list_students.get(i).getGender().equals("boy")||list_students.get(i).getGender().equals("male"))
             ) {
-                arr.add(list.get(i));
+                arr.add(list_students.get(i));
             }
         }
 
-        System.out.println(arr.size());
+        System.out.println(arr.size());    //打印数组的长度，即符合条件的人数
     }
 }

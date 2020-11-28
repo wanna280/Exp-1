@@ -67,7 +67,7 @@ public class dataProcessing {
         }
     }
 
-    public static ArrayList<Student> MergeCsvAndTxt(String filePath_csv,String filePath_txt){
+    public static ArrayList<Student> MergeCsvAndTxt(String filePath_csv,String filePath_txt){  //合并Csv和Txt文件
         ArrayList<Student> list = ReadFile.ReadCsv(filePath_csv);   //读取Csv的内容
         ArrayList<Student> list_txt = ReadFile.ReadCsv(filePath_txt);  //读取txt
         dataProcessing.TransformMtoCm(list_txt);
