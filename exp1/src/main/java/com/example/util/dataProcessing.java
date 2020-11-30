@@ -3,6 +3,7 @@ package com.example.util;
 import com.example.entity.Student;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class dataProcessing {
     public static double GetAverage(ArrayList<Double> grades) {   //传入一个grades的ArrayList求均值
@@ -73,6 +74,33 @@ public class dataProcessing {
         dataProcessing.TransformMtoCm(list_txt);   //将Txt文件中的内容的身高转换为cm
         list.addAll(list_txt);  //添加Txt的内容
         return list;    //返回学生列表
+    }
+
+    public static ArrayList<Student> DuplicateRemoval(ArrayList<Student> students){  //传入一个Student的ArrayList，根据Name去重
+        HashMap<String,Student> hashMap = new HashMap<>();
+        ArrayList<Student> stuList = new ArrayList<>();
+        for (int i =0;i<students.size();i++){
+            String key = students.get(i).getName();   //key
+            Student value = students.get(i);
+            hashMap.put(key,value);
+        }
+
+        for (String stuName:
+             hashMap.keySet()) {
+            stuList.add(hashMap.get(stuName));
+        }
+        return stuList;
+    }
+
+    /**
+     * 合并并去重
+     * @param filePath_csv
+     * @param filePath_txt
+     * @return
+     */
+    public static ArrayList<Student> MergeDuplicateRemoval_CsvAndTxt(String filePath_csv,String filePath_txt){
+        ArrayList<Student> students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
+        return dataProcessing.DuplicateRemoval(students);
     }
 
 

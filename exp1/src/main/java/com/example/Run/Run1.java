@@ -13,7 +13,7 @@ public class Run1 {
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
 
         //传入文件路径，直接读取合并后的文件
-        ArrayList<Student> list_students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
+        ArrayList<Student> list_students = dataProcessing.MergeDuplicateRemoval_CsvAndTxt(filePath_csv,filePath_txt);
 
         ArrayList<Student> arr = new ArrayList<Student>();
         HashMap<String, Double> map = new HashMap<>();  //创建hashMap，key为学生姓名，value为学生的平均成绩

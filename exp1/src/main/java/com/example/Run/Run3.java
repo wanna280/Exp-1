@@ -12,7 +12,7 @@ public class Run3 {
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
 
         //传入文件路径，直接读取合并后的文件
-        ArrayList<Student> list_students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
+        ArrayList<Student> list_students = dataProcessing.MergeDuplicateRemoval_CsvAndTxt(filePath_csv,filePath_txt);
 
         //存放居住在广州的学生列表
         ArrayList<Student> arr_guangzhou = new ArrayList<Student>();
