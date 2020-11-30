@@ -44,5 +44,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 
 
 ## 实验2： 
-#### python/dataProcessing.py---实现一些数据处理的方法，如GetAverage、GetCovariance、GetZScore、GetCorrelation等。  <br />
-#### python/Run.py---用来运行程序，根据注释可以运行对应题目的程序。  <br />
+#### python/dataProcessing.py
+---实现一些数据处理的方法，如GetAverage、GetCovariance、GetZScore、GetCorrelation等。  <br />
+#### python/Run.py
+---用来运行程序，根据注释可以运行对应题目的程序。  <br />
