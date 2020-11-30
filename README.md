@@ -1,9 +1,14 @@
 # Exp-1
+
+### 说明
 机器学习实验1存放路径为/Exp-1/exp1 <br />
 机器学习实验2存放路径为/Exp-1/exp1/python/ <br />
 机器学习实验3存放路径为/Exp-1/exp3 <br />
 机器学习实验4存放路径为/Exp-1/exp4 <br />
 机器学习实验5存放路径为/Exp-1/exp5 <br />
+
+/Exp-1/dataf.csv存放实验1FillNa(0)后输出的文件，用于实验2的数据导入
+/Exp-1/datafy.csv存放实验1DropNa后输出的文件，暂存
 
 
 
