@@ -97,20 +97,20 @@ public class dataProcessing {
         ArrayList<Student> stuList = new ArrayList<>();
         for (int i =0;i<students.size();i++){
             Student stu = students.get(i);
-            dataProcessing.TransformStudentID(stu);
+            dataProcessing.TransformStudentID(stu);   //格式化ID为统一格式
             String key = students.get(i).getName();   //key
             Student value = students.get(i);
 //            if(stu.getC1()==0 || stu.getC2()==0 || stu.getC3() ==0 || stu.getC4()==0 || stu.getC5() == 0
 //                    || stu.getC6()==0 || stu.getC7() ==0 ||stu.getC8()==0 || stu.getC9()==0 || dataProcessing.TransformConstitution(stu.getConstitution()) == 0.0) {
 //
-//            }else if(hashMap.containsKey(key)){    ///去掉0
-            if(hashMap.containsKey(key)){
-                Student stu1 = hashMap.get(key);
+//            }else if(hashMap.containsKey(key)){    ///去掉残缺的数据
+            if(hashMap.containsKey(key)){   //不去掉残缺的数据
+                Student stu1 = hashMap.get(key);   //从hashMap中获取出来key
                 if(stu.getStudentId()!=stu1.getStudentId()){   //如果HashMap中的Key和当前的Key相同，比较ID
-                    hashMap.put(key,value);
+                    hashMap.put(key,value);  //放置到hashMap当中
                 }
             }else {
-                hashMap.put(key,value);
+                hashMap.put(key,value);  //放置到hashMap当中
             }
         }
 
@@ -121,12 +121,7 @@ public class dataProcessing {
         return stuList;
     }
 
-    /**
-     * 合并并去重
-     * @param filePath_csv
-     * @param filePath_txt
-     * @return
-     */
+   //合并并去重并格式化
     public static ArrayList<Student> MergeDuplicateRemoval_CsvAndTxt(String filePath_csv,String filePath_txt){
         ArrayList<Student> students = dataProcessing.MergeCsvAndTxt(filePath_csv,filePath_txt);
         return dataProcessing.DuplicateRemoval(students);
