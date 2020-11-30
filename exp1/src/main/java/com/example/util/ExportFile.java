@@ -63,7 +63,7 @@ public class ExportFile {
                 content += students.get(i).getC10()*10 + ",";
                 content += dataProcessing.TransformConstitution(students.get(i).getConstitution()) + "\n";
             }
-            FileOutputStream out = new FileOutputStream("dataf.csv");
+            FileOutputStream out = new FileOutputStream("datafy.csv");
             byte[] bytes = content.getBytes();
             for (int i = 0;i<bytes.length;i++){
                 out.write(bytes[i]);

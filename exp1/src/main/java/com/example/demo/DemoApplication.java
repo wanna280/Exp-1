@@ -21,18 +21,13 @@ public class DemoApplication {
         //Run2.Run2();
         //Run3.Run3();
         //Run4.Run4();
-        //Panel panel = new Paint();
-        //Frame frame = new Frame("aaa");
-        //frame.setLocation(200,200);
-        //frame.add(panel);
-        //frame.setResizable(false);
-        //frame.setVisible(true);
 
         String filePath_csv = "src/main/java/com/example/Data/data.csv";
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
+        //读取合并去重并清洗后的数据
         ArrayList<Student> students = dataProcessing.MergeDuplicateRemoval_CsvAndTxt(filePath_csv,filePath_txt);
-        ExportFile.ExportByFormat(students);
-        System.out.println(students.size());
+        ExportFile.ExportByFormat(students);   //到处
+        System.out.println(students.size());   //打印数据大小
 
         //SpringApplication.run(DemoApplication.class, args);
 //        while (true){

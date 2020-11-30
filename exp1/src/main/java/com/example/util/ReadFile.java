@@ -90,7 +90,7 @@ public class ReadFile {
     public static ArrayList<Student> ReadCsv(String filePath) {
 
         ArrayList<Student> studentList = new ArrayList<>();  //创建一个学生列表ArrayList
-        File file = new File(filePath);
+        File file = new File(filePath);   //根据Path创建File
         InputStreamReader reader = null;
         try {
             reader = new InputStreamReader(new FileInputStream(file), "utf-8");
@@ -102,7 +102,7 @@ public class ReadFile {
         BufferedReader bufferedReader = new BufferedReader(reader);
 
         try {
-            bufferedReader.readLine();
+            bufferedReader.readLine();   //读取头部，不要保存
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 //System.out.println(line);

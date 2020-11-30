@@ -22,7 +22,7 @@ public class Run1 {
             }
         }
         for (int j = 0; j < arr.size(); j++) {  //遍历arr，将Average、ZScore等放入map
-            Student t = list_students.get(j);
+            Student t = list_students.get(j);  //t保存j对应序号的Student
 
             ArrayList<Double> arr_grades = new ArrayList<>();  //用于存放学生的每门成绩
             arr_grades.add(t.getC1());  //读取课程1的成绩
