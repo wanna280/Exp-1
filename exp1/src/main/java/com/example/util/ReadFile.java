@@ -74,6 +74,8 @@ public class ReadFile {
                 }
                 if (arr[15].toString().isEmpty()==false) {
                     student.setConstitution((String) arr[15]);
+                }else {
+                    student.setConstitution("0");
                 }
 
                 studentList.add(student);
@@ -107,7 +109,7 @@ public class ReadFile {
                 Object[] arr = line.split(",",16);  //利用","进行分割，且限制长度为16避免出现null无法读取
                 Student student = new Student();
                 if (arr[0].toString().isEmpty()==false) {
-                    student.setId(Integer.parseInt(arr[0].toString()));
+                    student.setStudentId(arr[0].toString());
                 }
                 if (arr[1].toString().isEmpty()==false) {
                     student.setName((String) arr[1]);
@@ -153,6 +155,8 @@ public class ReadFile {
                 }
                 if (arr[15].toString().isEmpty()==false) {
                     student.setConstitution((String) arr[15]);
+                }else {
+                    student.setConstitution("0");
                 }
 
                 studentList.add(student);

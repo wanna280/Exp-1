@@ -56,7 +56,8 @@ Data_Arr = [data_C1,data_C2,data_C3,data_C4,data_C5,data_C6,
 
 
 # 3.对每门成绩进行z-score归一化，得到归一化的数据矩阵
-
 Arr = dp.GetZscoreArray(Data_Arr)
 print(Arr)
-    
+
+
+# 4.

@@ -45,18 +45,9 @@ public class Student {
         Constitution = constitution;
     }
 
-    public double get_Constitution() {
-        return _Constitution;
-    }
-
-    public void set_Constitution(double _Constitution) {
-        this._Constitution = _Constitution;
-    }
-
     float C9;
     float C10;
     String Constitution;   //体测成绩
-    double _Constitution;   //体测成绩折算成百分制
 
     public Student(){
         this.C1 = 0;

@@ -68,11 +68,27 @@ public class dataProcessing {
         }
     }
 
+    public static void TransformStudentID(Student stu){   //格式化学号
+        if(stu.getStudentId().length()==3){
+            stu.setStudentId("202"+stu.getStudentId());
+        }
+        if(stu.getStudentId().length()==2){
+            stu.setStudentId("2020"+stu.getStudentId());
+        }
+        if(stu.getStudentId().length()==1){
+            stu.setStudentId("20200"+stu.getStudentId());
+        }
+    }
+
     public static ArrayList<Student> MergeCsvAndTxt(String filePath_csv,String filePath_txt){  //合并Csv和Txt文件
         ArrayList<Student> list = ReadFile.ReadCsv(filePath_csv);   //读取Csv的内容
         ArrayList<Student> list_txt = ReadFile.ReadCsv(filePath_txt);  //读取txt
-        dataProcessing.TransformMtoCm(list_txt);   //将Txt文件中的内容的身高转换为cm
         list.addAll(list_txt);  //添加Txt的内容
+        for (int i=0;i<list.size();i++){
+            if(list.get(i).getHeight()<10) {
+                list.get(i).setHeight(list.get(i).getHeight()*100);
+            }
+        }
         return list;    //返回学生列表
     }
 
@@ -80,9 +96,22 @@ public class dataProcessing {
         HashMap<String,Student> hashMap = new HashMap<>();
         ArrayList<Student> stuList = new ArrayList<>();
         for (int i =0;i<students.size();i++){
+            Student stu = students.get(i);
+            dataProcessing.TransformStudentID(stu);
             String key = students.get(i).getName();   //key
             Student value = students.get(i);
-            hashMap.put(key,value);
+//            if(stu.getC1()==0 || stu.getC2()==0 || stu.getC3() ==0 || stu.getC4()==0 || stu.getC5() == 0
+//                    || stu.getC6()==0 || stu.getC7() ==0 ||stu.getC8()==0 || stu.getC9()==0 || dataProcessing.TransformConstitution(stu.getConstitution()) == 0.0) {
+//
+//            }else if(hashMap.containsKey(key)){    ///去掉0
+            if(hashMap.containsKey(key)){
+                Student stu1 = hashMap.get(key);
+                if(stu.getStudentId()!=stu1.getStudentId()){   //如果HashMap中的Key和当前的Key相同，比较ID
+                    hashMap.put(key,value);
+                }
+            }else {
+                hashMap.put(key,value);
+            }
         }
 
         for (String stuName:

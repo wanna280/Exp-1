@@ -10,8 +10,8 @@ public class ExportFile {
         try{
             String content = "ID,Name,City,Gender,Hight,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,Constitution\n";
             for (int i=0;i<students.size();i++){
-                System.out.println(students.get(i).getId()+" "+students.get(i).getStudentId());
-                content += students.get(i).getId() + ",";
+                //System.out.println(students.get(i).getId()+" "+students.get(i).getStudentId());
+                content += students.get(i).getStudentId() + ",";
                 content += students.get(i).getName() + ",";
                 content += students.get(i).getCity() + ",";
                 content += students.get(i).getGender() + ",";
@@ -45,8 +45,8 @@ public class ExportFile {
         try{
             String content = "ID,Name,City,Gender,Hight,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,Constitution\n";
             for (int i=0;i<students.size();i++){
-                System.out.println(students.get(i).getId()+" "+students.get(i).getStudentId());
-                content += students.get(i).getId() + ",";
+                //System.out.println(students.get(i).getId()+" "+students.get(i).getStudentId());
+                content += students.get(i).getStudentId() + ",";
                 content += students.get(i).getName() + ",";
                 content += students.get(i).getCity() + ",";
                 content += students.get(i).getGender() + ",";

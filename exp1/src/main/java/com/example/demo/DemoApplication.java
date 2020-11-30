@@ -31,7 +31,6 @@ public class DemoApplication {
         String filePath_csv = "src/main/java/com/example/Data/data.csv";
         String filePath_txt = "src/main/java/com/example/Data/data.txt";
         ArrayList<Student> students = dataProcessing.MergeDuplicateRemoval_CsvAndTxt(filePath_csv,filePath_txt);
-
         ExportFile.ExportByFormat(students);
         System.out.println(students.size());
 
