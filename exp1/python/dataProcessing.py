@@ -18,7 +18,8 @@ def GetZScore(x):         #ZScore化
     s = np.sqrt(GetCovariance(x))
     y = []
     for i in range(len(x)):
-        x[i] = (x[i]-avg)/s
+        if s != 0:
+            x[i] = (x[i]-avg)/s
     return x
 
 def GetCorrelation(x,y):    #求相关系数
