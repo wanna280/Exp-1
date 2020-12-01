@@ -63,16 +63,28 @@ Data_Arr = [data_C1,data_C2,data_C3,data_C4,data_C5,data_C6,
 
 
 # 4.求出相关矩阵
-# _data=pd.read_csv("../dataf.csv",usecols=['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','Constitution'])
-# data_rowArray=np.array(_data)   #得到每一行的数据，data[0]为第一行的数据，data[1]为第二行的数据，以此类推
-# corr_Mat=[]   #初始化一个一个数组存放矩阵
-# for i in data_rowArray:    # 遍历每一行数据
-#     res = []
-#     for j in data_rowArray:
-#         res.append(dp.GetCorrelation(i,j))  #求出第i行与第j行的相关系数
-#     corr_Mat.append(res)  #附加
-# Corr_Matrix = np.matrix(corr_Mat)   #根据corr_Mat转换成矩阵
-# print(Corr_Matrix)   #打印出来矩阵
+_data=pd.read_csv("../dataf.csv",usecols=['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','Constitution'])
+data_rowArray=np.array(_data)   #得到每一行的数据，data[0]为第一行的数据，data[1]为第二行的数据，以此类推
+corr_Mat=[]   #初始化一个一个数组存放矩阵
+for i in data_rowArray:    # 遍历每一行数据
+    res = []
+    for j in data_rowArray:
+        res.append(dp.GetCorrelation(i,j))  #求出第i行与第j行的相关系数
+    corr_Mat.append(res)  #附加
+Corr_Matrix = np.matrix(corr_Mat)   #根据corr_Mat转换成矩阵
+#print(Corr_Matrix)   #打印出来矩阵
 
-
+# 5.根据相关矩阵，找到距离每个样本最近的三个样本，得到100x3的矩阵
+data_rowArray=np.array(_data)  #
+f=open('data_id1.txt','w')     #创建文件data_id.txt的文件指针
+for row in corr_Mat:          #遍历corr_Mat相关矩阵的每一行
+    print(dp.GetNumberOfMax(4,row))      #打印最大的四个数的列表
+    max_list=map(row.index,dp.GetNumberOfMax(4,row))   #用自己实现的函数，求出最大的4个数
+    max_list=list(max_list)   #转换为列表
+    res = []   #存放需要写入文件的内容
+    for i in max_list[1:]:   #遍历最大数的列表（排除掉它本身）
+        res.append(data_rowArray[int(i)][0])   #向res中附加data_rowArray[i][0]的内容
+    res=[str(i) for i in res]     #列表推导式，将内容转换为字符串并存放在数组当中
+    f.write(res[0]+'\t'+res[1]+'\t'+res[2]+'\n')     #将结果写到data_id.txt中
+f.close()    #关闭文件指针
 
