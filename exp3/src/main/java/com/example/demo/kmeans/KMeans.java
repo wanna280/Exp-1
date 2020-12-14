@@ -121,18 +121,18 @@ public class KMeans {
             Point[] points1 = new Point[K];    //存放聚类的中心点
 
             for (int i = 0; i < K; i++) {
-                points1[i] = new Point();
-                double[] sum = new double[dim];
-                for (int k = 0; k < dim; k++) {
+                points1[i] = new Point();    //重新生成聚类的质心
+                double[] sum = new double[dim];  //求和，用来后面求质心
+                for (int k = 0; k < dim; k++) {  //求每个纬度坐标之和，并将其补充到质心点当中去
                     for (int j = 0; j < pointLists[i].points.size(); j++) {
                         sum[k] += pointLists[i].points.get(j).GetXi(k);
                     }
-                    points1[i].SetXi(k, sum[k] / pointLists[i].points.size());  //设置对应位置
+                    points1[i].SetXi(k, sum[k] / pointLists[i].points.size());  //设置质心的值
                 }
                 //System.out.println(points1[i].GetXi(0));
             }
 
-            Double[][] disList1 = new Double[K][num];
+            Double[][] disList1 = new Double[K][num];  //新的距离矩阵
             for (int i = 0; i < K; i++) {
                 for (int j = 0; j < num; j++) {
                     disList1[i][j] = 0.0;
@@ -150,24 +150,24 @@ public class KMeans {
                 }
             }
 
-            for (int i = 0; i < K; i++) {
+            for (int i = 0; i < K; i++) {   //清空上一次循环生成的列表，并重新初始化为空
                 pointLists[i] = null;
                 pointLists[i] = new PointList();
             }
 
             for (int i = 0; i < disList[0].length; i++) {
-                double[] arr = new double[K];  //得到每一行的数据
-                for (int j = 0; j < K; j++) {
+                double[] arr = new double[K];  //保存每一行的数据，用于后面对行内求最小值
+                for (int j = 0; j < K; j++) {   //得到每一行的数据
                     arr[j] = disList1[j][i];
                 }
                 for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
-                    if (arr[j] == TransForm.GetMin(arr)) {
+                    if (arr[j] == TransForm.GetMin(arr)) {  //判断对应的距离是否为最小值，如果是最小值，将其放入对应的类别的列表当中
                         pointLists[j].points.add(new Point(x[0][i], x[1][i]));
                         break;
                     }
                 }
             }
-            for (int i = 0; i < K; i++) {
+            for (int i = 0; i < K; i++) {   //遍历每一个类别，打印类别的size
                 System.out.print(pointLists[i].points.size() + " ");
             }
             System.out.println();

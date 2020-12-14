@@ -3,7 +3,7 @@ package com.example.demo.utils;
 import java.util.Random;
 
 public class GetRandom {
-    public static Integer[] GetRandom(int K){
+    public static Integer[] GetRandom(int K){   //获取K个不同的随机数
         Integer[] random = new Integer[K];//初始化数组
         for (int i = 0; i < K; i++) {
             random[i] = 0;

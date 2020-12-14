@@ -6,27 +6,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileOperate {
-
-    private static ArrayList<Point> points = new ArrayList<>();
-    public static ArrayList<Point>  ReadFileAsPoint(String filePath){
-        File file = new File(filePath);   //创建文件指针读文件
-        try {
-            FileReader reader = new FileReader(file);   //创建读文件指针
-            BufferedReader bufferedReader= new BufferedReader(reader);  //创建读缓冲区指针
-            String line;
-            while ((line = bufferedReader.readLine())!=null){
-                String[] lineArr = line.split(",");   //将每行切割成x,y
-                points.add(new Point(Double.parseDouble(lineArr[0]),Double.parseDouble(lineArr[1])));  //加入数组
-            }
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return points;  //return
-
-
-    }
-
+    /**
+     * 用于保存二维的点
+     * @param filePath  文件路径
+     * @param x  要读入的第一列数据
+     * @param y  要读入的第二列数据
+     */
     public static void ReadFileAsArray(String filePath,Double[] x,Double[] y){
         File file = new File(filePath);   //创建文件指针读文件
         try {
@@ -47,6 +32,12 @@ public class FileOperate {
 
     }
 
+    /**
+     * 用于保存n(20)维的点
+     * @param filePath 传入需要读入的文件路径
+     * @param x  需要返回的数据
+     * @param dim  需要读取的数据维度
+     */
     public static void ReadFileAsArray1(String filePath,Double[][] x,int dim){
         File file = new File(filePath);   //创建文件指针读文件
         try {

@@ -1,6 +1,6 @@
 package com.example.demo.point;
 
-public class Point {
+public class Point {   //存放20纬的数据的点
     private int length;
     private double[] x = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 

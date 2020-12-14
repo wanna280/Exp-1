@@ -34,7 +34,7 @@ public class TransForm {
         return zscore;   //return zscore
     }
 
-    public static double GetDistance(Point p1, Point p2) {
+    public static double GetDistance(Point p1, Point p2) {  //求出任意纬度的点的欧式距离
         double sum = 0;
         for (int i = 0; i < p1.GetLength(); i++) {
             sum += (p1.GetX()[i]-p2.GetX()[i]) * (p1.GetX()[i]-p2.GetX()[i]);
@@ -43,7 +43,7 @@ public class TransForm {
     }
 
 
-    public static boolean Exists(int x,Integer[] array){
+    public static boolean Exists(int x,Integer[] array){  //x是否存在于array当中
         HashSet<Integer> set = new HashSet<>();
         set.addAll(Arrays.asList(array));   //将数组转换成为集合
         if(set.contains(x)){
@@ -52,10 +52,10 @@ public class TransForm {
         return false;
     }
 
-    public static double GetMin(double[] arr){
-        double min = arr[0];
+    public static double GetMin(double[] arr){  //求出数组的最小值
+        double min = arr[0];  //初始化min = arr[0]
         for (int i = 0; i < arr.length; i++) {
-            if(min>arr[i]){
+            if(min>arr[i]){  //如果遇到比自己还小的，将自己的值修改为更小的值
                 min = arr[i];
             }
         }
