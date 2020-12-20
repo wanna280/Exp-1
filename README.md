@@ -72,7 +72,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 ### demo/utils -- 存放一些项目中用到的一些工具类
 #### FileOpeate类主要实现将文件读取为数组
 提供两个构造方法 <br />
-1.ReadFileAsArray，用于读取2维的数据，通过传入一个txt文件路径，和两个Double类型的数组x,y，将读取到的txt文件的内容直接放到x，y数组当中。<br />
+1.ReadFileAsArray，用于读取2维的数据，通过传入一个txt/csv文件路径，和两个Double类型的数组x,y，将读取到的txt文件的内容直接放到x，y数组当中。<br />
 2.ReadFileAsArray1，用于读取小于20维的数据，通过传入一个txt文件的路径和一个二维的Double数组x，以及dim（需要读取的数据的纬度），直接将最终结果存储到x数组当中。<br />
 
 #### GetRandom类主要实现一个static方法，用于获取K个不同的随机整数，传入参数K就可以返回Integer类型的数组
