@@ -9,16 +9,16 @@
 
 /Exp-1/dataf.csv存放实验1FillNa(0)后输出的文件，用于实验2的数据导入
 /Exp-1/datafy.csv存放实验1DropNa后输出的文件，暂存
-
-## 项目结构说明：
+## 实验1
+### 项目结构说明：
 项目存放的根路径为/Exp-1/Exp3/src/main/java/com/demo
-### Run目录：
+#### Run目录：
 在Run目录下存放的类为项目中每道题目的源代码，如题目1为Run1，在demo/DemoApplication下通过调用对应的静态方法就可以实现运行每道题目。 <br />
-### entity目录：
+#### entity目录：
 entity目录存放项目对应的实体类，如实验1中的学生实体。 <br />
-### util目录： 
+#### util目录： 
 util目录下存放项目对应的工具，如实验1中的计算均值、方差等的工具。<br />
-### Data目录： 
+#### Data目录： 
 Data目录存放项目用到的数据文件，如实验1中的学生成绩表。 <br />
 
 #### util/ReadFile.java
