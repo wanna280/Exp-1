@@ -34,7 +34,7 @@ public class TransForm {
         return zscore;   //return zscore
     }
 
-    public static double GetDistance(Point p1, Point p2) {  //求出任意纬度的点的欧式距离
+    public static double GetDistance(Point p1, Point p2) {  //求出任意维度的点的欧式距离
         double sum = 0;
         for (int i = 0; i < p1.GetLength(); i++) {
             sum += (p1.GetX()[i]-p2.GetX()[i]) * (p1.GetX()[i]-p2.GetX()[i]);

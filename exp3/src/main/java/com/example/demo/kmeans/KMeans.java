@@ -68,18 +68,15 @@ public class KMeans {
         PointList[] pointLists = new PointList[K];  //存放聚类后的结果,分成K类
         Point[] points = new Point[K];  //聚类的中心点
         Integer[] random = GetRandom.GetRandom(K);   //生成K个不同的随机数
-        Double[][] disList = new Double[K][num];   //求出距离矩阵
-
-        for (int i = 0; i < K; i++) {  //初始化聚类结果列表为空
-            pointLists[i] = new PointList();
-        }
+        Double[][] disList = new Double[K][num];   //存放距离矩阵
 
         for (int i = 0; i < K; i++) {  //生成聚类的中心点
+            pointLists[i] = new PointList();   //初始化聚类的各个类别为空
             points[i] = new Point();  //创建空点，并向其中加入值
             for (int j = 0; j < dim; j++) {    //中心点的各个维度坐标
-                points[i].SetXi(j, x[j][random[i]]);
+                points[i].SetXi(j, x[j][random[i]]);  //设置初始中心点的各纬度坐标
             }
-            pointLists[i].points.add(points[i]);   //向列表中添加中心点
+            pointLists[i].points.add(points[i]);   //向聚类的类列表中添加中心点
         }
 
         for (int j = 0; j < K; j++) {
@@ -101,14 +98,18 @@ public class KMeans {
                 }
                 for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
                     if (arr[j] == TransForm.GetMin(arr)) {
-                        pointLists[j].points.add(new Point(x[0][i], x[1][i]));
+                        Point point = new Point();
+                        for(int k =0;k<dim;k++){
+                            point.SetXi(k,x[k][i]);
+                        }
+                        pointLists[j].points.add(point);
                         break;
                     }
                 }
             }
         }
         for (int i = 0; i < K; i++) {
-            System.out.print(pointLists[i].points.size() + "-");
+            System.out.print(pointLists[i].points.size() + " ");
         }
         System.out.println();
 
@@ -116,14 +117,15 @@ public class KMeans {
 //            System.out.println(pointLists[i].points.size());
 //        }
 
+        ArrayList<Point[]> center = new ArrayList<>();   //存放每次执行的聚类中心
+        center.add(points);  //加入随机生成的中心
         int t = 0;
         while (t<20) {
             Point[] points1 = new Point[K];    //存放聚类的中心点
-
             for (int i = 0; i < K; i++) {
                 points1[i] = new Point();    //重新生成聚类的质心
                 double[] sum = new double[dim];  //求和，用来后面求质心
-                for (int k = 0; k < dim; k++) {  //求每个纬度坐标之和，并将其补充到质心点当中去
+                for (int k = 0; k < dim; k++) {  //求每个维度坐标之和，并将其补充到质心点当中去
                     for (int j = 0; j < pointLists[i].points.size(); j++) {
                         sum[k] += pointLists[i].points.get(j).GetXi(k);
                     }
@@ -149,6 +151,7 @@ public class KMeans {
                     disList1[j][i] = dis;
                 }
             }
+            center.add(points1);
 
             for (int i = 0; i < K; i++) {   //清空上一次循环生成的列表，并重新初始化为空
                 pointLists[i] = null;
@@ -173,5 +176,6 @@ public class KMeans {
             System.out.println();
             t += 1;
         }
+        System.out.println();
     }
 }
