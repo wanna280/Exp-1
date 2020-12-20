@@ -19,12 +19,12 @@ public class Run3 {
         //存放居住在上海的学生列表
         ArrayList<Student> arr_shanghai = new ArrayList<Student>();
 
-        System.out.println(list_students.size());
+        //System.out.println(list_students.size());
         for (int i = 0; i < list_students.size(); i++) {
             if (list_students.get(i).getCity().equals("Guangzhou")) {   //查询广州的，加入广州学生列表
                 arr_guangzhou.add(list_students.get(i));
             }
-            if (list_students.get(i).getCity().equals("Shanghai")) {   //查询伤害的，加入上海学生列表
+            if (list_students.get(i).getCity().equals("Shanghai")) {   //查询上海的，加入上海学生列表
                 arr_shanghai.add(list_students.get(i));
             }
         }

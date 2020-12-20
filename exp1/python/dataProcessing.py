@@ -11,7 +11,7 @@ def GetCovariance(x):      #求方差
     sum = 0
     for i in x:
         sum += (i-x1)**2  #sum =(x-x1)*(x-x1)
-    return sum/(len(x) - 1)   return cov
+    return sum/(len(x) - 1)   #return cov
 
 def GetZScore(x):         #ZScore化
     avg = GetAverage(x)  #cov
@@ -28,7 +28,7 @@ def GetCorrelation(x,y):    #求相关系数
     sum = 0
     for i in range(len(x)):     # x,y长度一样
         sum += A[i] * B[i]
-    return sum   return corr
+    return sum   #return corr
 
 def GetZscoreArray(x):   #求Zscore数组
     Matrix = []

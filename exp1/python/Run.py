@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import dataProcessing as dp     #导入自己实现的数据处理模块
+import dataProcessing as dp     
 
 data = pd.read_csv("../dataf.csv",usecols=['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','Constitution'])
 data_C1 = data.loc[:,["C1"]].values
@@ -62,7 +62,7 @@ Data_Arr = [data_C1,data_C2,data_C3,data_C4,data_C5,data_C6,
 # print(Arr_Zscore)
 
 
-# 4.求出相关矩阵
+# # 4.求出相关矩阵
 _data=pd.read_csv("../dataf.csv",usecols=['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','Constitution'])
 data_rowArray=np.array(_data)   #得到每一行的数据，data[0]为第一行的数据，data[1]为第二行的数据，以此类推
 corr_Mat=[]   #初始化一个一个数组存放矩阵
@@ -72,9 +72,9 @@ for i in data_rowArray:    # 遍历每一行数据
         res.append(dp.GetCorrelation(i,j))  #求出第i行与第j行的相关系数
     corr_Mat.append(res)  #附加
 Corr_Matrix = np.matrix(corr_Mat)   #根据corr_Mat转换成矩阵
-#print(Corr_Matrix)   #打印出来矩阵
+print(Corr_Matrix)   #打印出来矩阵
 
-# 5.根据相关矩阵，找到距离每个样本最近的三个样本，得到100x3的矩阵
+# # 5.根据相关矩阵，找到距离每个样本最近的三个样本，得到100x3的矩阵
 data_rowArray=np.array(_data)  #
 f=open('data_id1.txt','w')     #创建文件data_id.txt的文件指针
 for row in corr_Mat:          #遍历corr_Mat相关矩阵的每一行

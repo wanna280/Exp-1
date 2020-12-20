@@ -16,7 +16,7 @@ public class Run2 {
         ArrayList<Student> list_students = dataProcessing.MergeDuplicateRemoval_CsvAndTxt(filePath_csv,filePath_txt);
 
         ArrayList<Student> arr = new ArrayList<Student>();  //存放符合条件的学生列表
-        System.out.println(list_students.size());
+        //System.out.println(list_students.size());
         for (int i = 0; i < list_students.size(); i++) {
             //System.out.println(list_students.get(i).getName()+ "-" + list_students.get(i).getCity()+"-"+ list_students.get(i).getGender() + "-" + list_students.get(i).getC1()+ "-" +list_students.get(i).getC9());
             if (list_students.get(i).getCity().equals("Guangzhou")
