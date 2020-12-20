@@ -7,11 +7,12 @@
 机器学习实验4存放路径为/Exp-1/exp4 <br />
 机器学习实验5存放路径为/Exp-1/exp5 <br />
 
-/Exp-1/dataf.csv存放实验1FillNa(0)后输出的文件，用于实验2的数据导入
-/Exp-1/datafy.csv存放实验1DropNa后输出的文件，暂存
+
 ## 实验1
 ### 项目结构说明：
-项目存放的根路径为/Exp-1/Exp3/src/main/java/com/demo
+/Exp-1/exp1/dataf.csv存放实验1FillNa(0)后输出的文件，用于实验2的数据导入
+/Exp-1/exp1/datafy.csv存放实验1DropNa后输出的文件，暂存
+项目存放的根路径为/Exp-1/exp1/src/main/java/com/example/
 #### Run目录：
 在Run目录下存放的类为项目中每道题目的源代码，如题目1为Run1，在demo/DemoApplication下通过调用对应的静态方法就可以实现运行每道题目。 <br />
 #### entity目录：
@@ -57,7 +58,9 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 
 
 ## 实验3
-项目存放的根路径为/Exp-1/Exp3/src/main/java/com/demo
+项目存放的根路径为/Exp-1/exp3/src/main/java/com/example/
+/Exp-1/exp3/data.csv文件存放实现中的二维数据
+/Exp-1/exp3/dataf.csv文件存放需要用到的十一位数据（从1题中导出）
 ### demo/utils -- 存放一些项目中用到的一些工具类
 #### FileOpeate类主要实现将文件读取为数组
 提供两个构造方法 <br />
