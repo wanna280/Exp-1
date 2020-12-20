@@ -1,4 +1,4 @@
-# Exp-1
+## Exp-1
 
 ### 说明
 机器学习实验1存放路径为/Exp-1/exp1 <br />
@@ -10,9 +10,8 @@
 /Exp-1/dataf.csv存放实验1FillNa(0)后输出的文件，用于实验2的数据导入
 /Exp-1/datafy.csv存放实验1DropNa后输出的文件，暂存
 
-
-## 实验1： 
 ## 项目结构说明：
+项目存放的根路径为/Exp-1/Exp3/src/main/java/com/demo
 ### Run目录：
 在Run目录下存放的类为项目中每道题目的源代码，如题目1为Run1，在demo/DemoApplication下通过调用对应的静态方法就可以实现运行每道题目。 <br />
 ### entity目录：
@@ -40,7 +39,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 ---杂项文件 <br />
 #### entity/Student.java
 ---定义学生实体类 <br />
-#### demo/DemoApplication
+#### DemoApplication
 ---项目的入口主程序，调用Runx.Runx()方法来运行(x=1,2,3,4) <br />
 #### Data/*
 ---项目的数据文件 <br />
@@ -89,3 +88,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 #### KMeans类主要实现KMean算法
 1.实现方法KMeans传入K值，以及两个维度的数据x和y，将点(x,y)分成K类 <br />
 2.实现方法KMeans1传入K值、数据（dim*num）、dim（维度）、num（点的个数），将这些点(x1,x2,...xn)分成K类 <br />
+
+
+### demo/DemoApplication
+项目的主程序--通过调用实现的方法读取文件，以及执行KMeans算法。 <br />
