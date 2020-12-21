@@ -2,6 +2,7 @@ package com.example.demo.kmeans;
 
 import com.example.demo.point.Point;
 import com.example.demo.point.PointList;
+import com.example.demo.utils.FileOperate;
 import com.example.demo.utils.GetRandom;
 import com.example.demo.utils.TransForm;
 
@@ -74,7 +75,7 @@ public class KMeans {
             pointLists[i] = new PointList();   //初始化聚类的各个类别为空
             points[i] = new Point();  //创建空点，并向其中加入值
             for (int j = 0; j < dim; j++) {    //中心点的各个维度坐标
-                points[i].SetXi(j, x[j][random[i]]);  //设置初始中心点的各纬度坐标
+                points[i].SetXi(j, x[j][random[i]]);  //设置初始中心点的各维度坐标
             }
             pointLists[i].points.add(points[i]);   //向聚类的类列表中添加中心点
         }
@@ -99,8 +100,8 @@ public class KMeans {
                 for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
                     if (arr[j] == TransForm.GetMin(arr)) {
                         Point point = new Point();
-                        for(int k =0;k<dim;k++){
-                            point.SetXi(k,x[k][i]);
+                        for (int k = 0; k < dim; k++) {
+                            point.SetXi(k, x[k][i]);
                         }
                         pointLists[j].points.add(point);
                         break;
@@ -113,14 +114,11 @@ public class KMeans {
         }
         System.out.println();
 
-//        for (int i = 0; i < K; i++) {
-//            System.out.println(pointLists[i].points.size());
-//        }
-
         ArrayList<Point[]> center = new ArrayList<>();   //存放每次执行的聚类中心
         center.add(points);  //加入随机生成的中心
+
         int t = 0;
-        while (t<20) {
+        while (t < 20) {
             Point[] points1 = new Point[K];    //存放聚类的中心点
             for (int i = 0; i < K; i++) {
                 points1[i] = new Point();    //重新生成聚类的质心
@@ -176,6 +174,35 @@ public class KMeans {
             System.out.println();
             t += 1;
         }
+
+        Point[] points_max_to_center = new Point[K];   //记录距离中心最远的点的集合
+        for (int i = 0; i < K; i++) {   //遍历每个类别
+            double max = 0;  //记录类别内距离最大的值
+            int index = 0;  //找到距离最大的点的索引
+            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点找到距离最大的点
+                //System.out.println(TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]));
+                if (max < TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
+                    max = TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]);
+                }
+            }
+            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点
+                if (max == TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
+                    index = j;
+                    break;
+                }
+            }
+            points_max_to_center[i] = pointLists[i].points.get(index);
+        }
+
+
+        ArrayList<Point[]> lastCenter = new ArrayList<>();
+        lastCenter.add(center.get(20));   //将最后的中心点添加入列表，用于后面的打印和导出
+        ArrayList<Point[]> maxDistance = new ArrayList<>();
+        maxDistance.add(points_max_to_center);   //将距离最远的点放入列表，用于后面的打印和导出
         System.out.println();
+        FileOperate.ExportFile("data_center.csv", center);
+        FileOperate.ExportFile("data_lastCenter.csv", lastCenter);
+        FileOperate.ExportFile("data_maxDistance.csv", maxDistance);
+
     }
 }

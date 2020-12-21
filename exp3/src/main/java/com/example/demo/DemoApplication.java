@@ -7,6 +7,7 @@ import com.example.demo.utils.TransForm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,15 +15,15 @@ import java.util.HashMap;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        final String filePath = "data.csv";
-        int dim = 2;
-        int num = 20;
+        final String filePath = "dataf.csv";
+        int dim = 11;
+        int num = 106;
         Double[][] x1 = new Double[dim][num];
-        FileOperate.ReadFileAsArray1("data.csv",x1,dim);
+        FileOperate.ReadFileAsArray1("dataf.csv",x1,dim);
         for (int i = 0; i < dim; i++) {
                 x1[i] = TransForm.GetZScore(x1[i]);
         }
-        KMeans.KMeans1(5,x1,dim,num);
+        KMeans.KMeans1(3,x1,dim,num);
 
     }
 
