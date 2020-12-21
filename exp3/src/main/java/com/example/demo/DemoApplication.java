@@ -16,13 +16,13 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         final String filePath = "dataf.csv";
-        int dim = 11;
-        int num = 106;
+        int dim = 2;
+        int num = 20;
         Double[][] x1 = new Double[dim][num];
-        FileOperate.ReadFileAsArray1("dataf.csv",x1,dim);
-        for (int i = 0; i < dim; i++) {
-                x1[i] = TransForm.GetZScore(x1[i]);
-        }
+        FileOperate.ReadFileAsArray1("data.csv",x1,dim);
+//        for (int i = 0; i < dim; i++) {
+//                x1[i] = TransForm.GetZScore(x1[i]);
+//        }
         KMeans.KMeans1(3,x1,dim,num);
 
     }
