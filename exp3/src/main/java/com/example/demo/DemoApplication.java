@@ -15,7 +15,6 @@ import java.util.HashMap;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        final String filePath = "dataf.csv";
         int dim = 2;
         int num = 20;
         Double[][] x1 = new Double[dim][num];
@@ -23,7 +22,7 @@ public class DemoApplication {
 //        for (int i = 0; i < dim; i++) {
 //                x1[i] = TransForm.GetZScore(x1[i]);
 //        }
-        KMeans.KMeans1(3,x1,dim,num);
+        KMeans.KMeans1(5,x1,dim,num);
 
     }
 

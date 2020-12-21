@@ -63,7 +63,7 @@ public class FileOperate {
 
     }
 
-    public static void ExportFile(String filePath, ArrayList<Point[]> arr) {  //导出中心点
+    public static void ExportFile(String filePath, ArrayList<Point[]> arr,int len) {  //导出中心点
         File file = new File(filePath);
         FileWriter writer = null;
         try {
@@ -71,7 +71,6 @@ public class FileOperate {
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             for (int i = 0; i < arr.size(); i++) {
                 for (int j = 0; j < arr.get(i).length; j++) {
-                    int len = 2;
                     for (int k = 0; k < len; k++) {
                         String content = String.valueOf(arr.get(i)[j].GetXi(k));
                         //System.out.println(content);
