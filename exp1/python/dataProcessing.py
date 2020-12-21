@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def GetAverage(x):         #求均值
     sum = 0
@@ -43,6 +44,13 @@ def GetMax(x):        #获取列表中最大的数
             max = x[i]
     return max  #return max
 
+def GetMin(x):        #获取列表中最小的数
+    min= x[0]
+    for i in range(len(x)):   #遍历x列表，求出最小值max
+        if min > x[i]:   #如果数组中找到比它更小的数，用数组中对应的元素赋值给max
+            min = x[i]
+    return min  #return min
+
 def GetNumberOfMax(num,x):   #获取列表最大的几个数
     max_of_number =[]    #初始化最大数组为空列表
     for i in range(num):   #根据给定的num进行循环
@@ -50,3 +58,12 @@ def GetNumberOfMax(num,x):   #获取列表最大的几个数
         max_of_number.append(max)  #向max_of_number中添加当前列表中最大的值
         x.remove(max)   #列表中移除掉最大值
     return max_of_number   #return max of number
+
+def confusion_matrix(cor_matrix):   #绘制混淆矩阵
+    plt.title("confusion_matrix")
+    plt.imshow(cor_matrix,  cmap=plt.cm.autumn)#绘制热力图
+    plt.colorbar()#生成子图
+    plt.xlabel("student")
+    plt.ylabel("student")
+    plt.tight_layout()#自动调整子图参数，使之填充整个图像区域
+    plt.show()

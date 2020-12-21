@@ -6,8 +6,9 @@
 
 
 ### 说明
-实验1和实验3都是主要采用Java语言编写，使用一个Demo的SpringBoot项目进行编写。 <br />
-实验2，由于主要涉及到的都是画图这类的，使用python进行画图等会比较方便，因此主要采用python语言 <br />
+实验1主要采用Java语言编写，使用一个Demo的SpringBoot项目进行编写。 <br />
+实验2，由于主要涉及到的都是画图这类的，使用Python进行画图等会比较方便，因此主要采用Python语言 <br />
+实验3，算法的实现部分使用Java实现，可视化散点图、类中心类半径是java导出数据并且使用Python进行绘制的。 <br />
 机器学习实验1存放路径为/Exp-1/exp1 <br />
 机器学习实验2存放路径为/Exp-1/exp1/python/ <br />
 机器学习实验3存放路径为/Exp-1/exp3 <br />
@@ -58,7 +59,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 #### python/dataProcessing.py
 ---实现一些数据处理的方法，如GetAverage、GetCovariance、GetZScore、GetCorrelation等。  <br />
 #### python/Run.py
----用来运行程序，根据注释可以运行对应题目的程序。  <br />
+---用来运行程序，根注释掉对应的内容可以运行对应题目的程序。  <br />
 #### python/data_id.txt
 ---用来保存实验2第五题的实验数据导出结果
 
