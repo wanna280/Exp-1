@@ -101,8 +101,13 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 1.实现方法KMeans传入K值，以及两个维度的数据x和y，将点(x,y)分成K类 <br />
 2.实现方法KMeans1传入K值、数据（dim*num）、dim（维度）、num（点的个数），将这些点(x1,x2,...xn)分成K类 <br />
 
+### /Exp-1/exp3/data_center.csv、data_lastCenter.csv、data_maxDistance.csv
+分别存放数据的类中心变化过程、最终类中心、距离类中心最远的点的x，y值
+
 ### /Exp-1/exp3/python
 main.py，主要用于可视化类中心，类半径等
+主要调用pandas库和matplotlib库进行文件的读取和数据可视化
+
 
 ### demo/DemoApplication
 项目的主程序--通过调用实现的方法读取文件，以及执行KMeans算法。 <br />
