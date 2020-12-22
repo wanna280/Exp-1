@@ -18,11 +18,11 @@ public class DemoApplication {
         int dim = 2;
         int num = 20;
         Double[][] x1 = new Double[dim][num];
-        FileOperate.ReadFileAsArray1("data.csv",x1,dim);
+        FileOperate.ReadFileAsArrayn("data.csv",x1,dim);
 //        for (int i = 0; i < dim; i++) {
 //                x1[i] = TransForm.GetZScore(x1[i]);
 //        }
-        KMeans.KMeans1(5,x1,dim,num);
+        KMeans.KMeans(2,x1,dim,num);
 
     }
 

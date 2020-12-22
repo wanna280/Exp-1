@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.point.Point;
+import com.example.demo.point.PointList;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class FileOperate {
      * @param x        需要返回的数据
      * @param dim      需要读取的数据维度
      */
-    public static void ReadFileAsArray1(String filePath, Double[][] x, int dim) {
+    public static void ReadFileAsArrayn(String filePath, Double[][] x, int dim) {
         File file = new File(filePath);   //创建文件指针读文件
         try {
             FileReader reader = new FileReader(file);   //创建读文件指针
@@ -63,7 +64,7 @@ public class FileOperate {
 
     }
 
-    public static void ExportFile(String filePath, ArrayList<Point[]> arr,int len) {  //导出中心点
+    public static void ExportFile(String filePath, ArrayList<Point[]> arr, int len) {  //导出中心点
         File file = new File(filePath);
         FileWriter writer = null;
         try {
@@ -94,6 +95,35 @@ public class FileOperate {
         }
 
 
+    }
+
+    public static void ExportTagFile(String fileName, int K, int dim, PointList[] pointLists)  //导出打标签后的文件
+    {
+        File file = new File(fileName);   //创建一个文件指针对象
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file);   //创建文件指针写的对象
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);   //创建写缓冲区指针的对象
+
+            for (int i = 0; i < K; i++) {   //遍历得到标签列表的每一行
+                for (int j = 0; j < pointLists[i].points.size(); j++) {
+                    String tagFileLine = "";    //标签文件的一行，用于写文件
+                    for (int k = 0; k < dim; k++) {
+                        tagFileLine += String.valueOf(pointLists[i].points.get(j).GetXi(k)) + ",";
+                        if (k == dim - 1) {   //在行的最后，加上标签
+                            tagFileLine += String.valueOf(i) + "\n";
+                        }
+                    }
+                    System.out.println(tagFileLine);  //终端打印
+                    bufferedWriter.write(tagFileLine);   //写入缓冲区（文件）
+                }
+            }
+            bufferedWriter.close();  //关闭缓冲区指针
+            writer.close();  //关闭文件指针
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

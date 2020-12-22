@@ -73,9 +73,9 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 ### demo/utils -- 存放一些项目中用到的一些工具类
 #### FileOpeate类主要实现将文件读取为数组
 提供三个构造方法 <br />
-1.ReadFileAsArray，用于读取2维的数据，通过传入一个txt/csv文件路径，和两个Double类型的数组x,y，将读取到的txt文件的内容直接放到x，y数组当中。<br />
-2.ReadFileAsArray1，用于读取小于20维的数据，通过传入一个txt文件的路径和一个二维的Double数组x，以及dim（需要读取的数据的纬度），直接将最终结果存储到x数组当中。<br />
-3.ExportFile，用于将得到的中心点相关的数据写入文件，传入ArrayList<Point []>对象和文件路径 <br />
+1.ReadFileAsArrayn，用于读取小于20维的数据，通过传入一个txt/csv文件的路径和一个二维的Double数组x，以及dim（需要读取的数据的纬度），直接将最终结果存储到x数组当中。<br />
+2.ExportFile，用于将得到的中心点相关的数据写入文件，传入ArrayList<Point []>对象和文件路径 <br />
+3.ExportTagFile，用于导出带有类标签的文件，用于实验4 <br />
 
 #### GetRandom类主要实现一个static方法，用于获取K个不同的随机整数，传入参数K就可以返回Integer类型的数组
 #### TransForm类主要存放一些项目中需要进行计算的方法
@@ -85,6 +85,7 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 4.GetDistance方法用于实现求两个N纬度的点之间的欧式距离，点是指会在下面介绍的Point对象。 <br />
 5.Exists方法用于判断一个元素x是否在一个数组array当中，传入的参数即是x和array <br />
 6.GetMin方法用于去求一个数组当中的最小值，用于后面KMeans中判断距离的远近 <br />
+6.GetMaxDistancePoints方法用于去求各个类的点到类中心的距离最大的点的点列表<br />
 
 ### demo/point 存放项目中用到的点和点向量
 #### Point类用于定义点
@@ -99,11 +100,10 @@ Data目录存放项目用到的数据文件，如实验1中的学生成绩表。
 
 ### demo/kmeans
 #### KMeans类主要实现KMean算法
-1.实现方法KMeans传入K值，以及两个维度的数据x和y，将点(x,y)分成K类 <br />
-2.实现方法KMeans1传入K值、数据（dim*num）、dim（维度）、num（点的个数），将这些点(x1,x2,...xn)分成K类 <br />
+实现方法KMeans1传入K值、数据（dim*num）、dim（维度）、num（点的个数），将这些点(x1,x2,...xn)分成K类 <br />
 
-### /Exp-1/exp3/data_center.csv、data_lastCenter.csv、data_maxDistance.csv
-分别存放数据的类中心变化过程、最终类中心、距离类中心最远的点的x，y值
+### /Exp-1/exp3/data_center.csv、data_lastCenter.csv、data_maxDistance.csv、data_tag.csv
+分别存放数据的类中心变化过程、最终类中心、距离类中心最远的点、打标签后的点集合的x，y值
 
 ### /Exp-1/exp3/python
 main.py，主要用于可视化类中心，类半径等
@@ -112,3 +112,6 @@ main.py，主要用于可视化类中心，类半径等
 
 ### demo/DemoApplication
 项目的主程序--通过调用实现的方法读取文件，以及执行KMeans算法。 <br />
+
+## 实验4
+第一问使用python进行进行画图，路径为/Exp-1/exp4/python/

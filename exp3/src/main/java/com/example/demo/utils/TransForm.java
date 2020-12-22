@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.point.Point;
+import com.example.demo.point.PointList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,6 +67,30 @@ public class TransForm {
             }
         }
         return min;
+    }
+
+    //找到各个类中距离类中心最远的点
+    public static Point[] GetMaxDistancePoints(int K, PointList[] pointLists,ArrayList<Point[]> center)
+    {
+        Point[] points_max_to_center = new Point[K];   //记录距离中心最远的点的集合
+        for (int i = 0; i < K; i++) {   //遍历每个类别
+            double max = 0;  //记录类别内距离最大的值
+            int index = 0;  //找到距离最大的点的索引
+            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点找到距离最大的点
+                //System.out.println(TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]));
+                if (max < TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
+                    max = TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]);
+                }
+            }
+            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点
+                if (max == TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
+                    index = j;
+                    break;
+                }
+            }
+            points_max_to_center[i] = pointLists[i].points.get(index);
+        }
+        return points_max_to_center;
     }
 
 

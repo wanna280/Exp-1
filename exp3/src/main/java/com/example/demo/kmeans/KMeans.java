@@ -5,97 +5,41 @@ import com.example.demo.point.PointList;
 import com.example.demo.utils.FileOperate;
 import com.example.demo.utils.GetRandom;
 import com.example.demo.utils.TransForm;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 public class KMeans {
-    /**
-     * @param K
-     * @param x
-     * @param y
-     */
-    public static void KMeans(int K, Double[] x, Double[] y) {
-        PointList[] pointLists = new PointList[K];  //存放聚类后的结果,分成K类
-        Point[] points = new Point[K];  //聚类的中心点
-        Integer[] random = GetRandom.GetRandom(K);   //生成K个不同的随机数
 
-        for (int i = 0; i < K; i++) {  //初始化聚类结果列表为空
-            pointLists[i] = new PointList();
-            //System.out.println(random[i]);
-        }
+    public static void KMeans(int K, Double[][] x, int dim, int num) {
+        PointList[] points_k_list = new PointList[K];  //存放聚类后的结果,分成K类
+        Point[] points_k_init = new Point[K];  //第一次使用随机点聚类的中心点
+        Integer[] random = GetRandom.GetRandom(K);   //生成K个不同的随机数
+        Double[][] distance_matrix_random_init = new Double[K][num];   //存放首次使用随机数生成的距离矩阵
 
         for (int i = 0; i < K; i++) {  //生成聚类的中心点
-            //System.out.println(random[i].intValue());
-            points[i] = new Point();  //创建空点，并向其中加入值
-            points[i].SetXi(0, x[random[i]]);
-            points[i].SetXi(1, y[random[i]]);
-            pointLists[i].points.add(points[i]);   //向列表中添加中心点
-        }
-
-        Double[][] disList = new Double[K][x.length];   //求出距离列表
-        for (int j = 0; j < K; j++) {
-            for (int i = 0; i < x.length; i++) {
-                Point point = new Point(x[i], y[i]);
-                double dis = TransForm.GetDistance(points[j], point);  //求距离数组
-                disList[j][i] = dis;
-                //System.out.println(disList[j][i]);
-            }
-        }
-
-        for (int i = 0; i < disList[0].length; i++) {
-            if (!TransForm.Exists(i, random)) {   //如果不是聚类的中心点
-                double[] arr = new double[K];  //得到每一行的数据
-                for (int j = 0; j < K; j++) {
-                    arr[j] = disList[j][i];
-                }
-                for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
-                    if (arr[j] == TransForm.GetMin(arr)) {
-                        pointLists[j].points.add(new Point(x[i], y[i]));
-                        break;
-                    }
-                }
-            }
-        }
-        for (int i = 0; i < K; i++) {
-            System.out.println(pointLists[i].points.size());
-        }
-
-
-    }
-
-    public static void KMeans1(int K, Double[][] x, int dim, int num) {
-        PointList[] pointLists = new PointList[K];  //存放聚类后的结果,分成K类
-        Point[] points = new Point[K];  //聚类的中心点
-        Integer[] random = GetRandom.GetRandom(K);   //生成K个不同的随机数
-        Double[][] disList = new Double[K][num];   //存放距离矩阵
-
-        for (int i = 0; i < K; i++) {  //生成聚类的中心点
-            pointLists[i] = new PointList();   //初始化聚类的各个类别为空
-            points[i] = new Point();  //创建空点，并向其中加入值
+            points_k_list[i] = new PointList();   //初始化聚类的各个类别为空
+            points_k_init[i] = new Point();  //创建空点，并向其中加入值
             for (int j = 0; j < dim; j++) {    //中心点的各个维度坐标
-                points[i].SetXi(j, x[j][random[i]]);  //设置初始中心点的各维度坐标
+                points_k_init[i].SetXi(j, x[j][random[i]]);  //设置初始中心点的各维度坐标
             }
-            pointLists[i].points.add(points[i]);   //向聚类的类列表中添加中心点
+            points_k_list[i].points.add(points_k_init[i]);   //向聚类的类列表中添加中心点
         }
 
         for (int j = 0; j < K; j++) {
             for (int i = 0; i < num; i++) {
                 Point point = new Point();
-                for (int k = 0; k < dim; k++) {   //将多个纬度的值的转换为Point
+                for (int k = 0; k < dim; k++) {   //将多个维度的值的转换为Point
                     point.SetXi(k, x[k][i]);
                 }
-                double dis = TransForm.GetDistance(points[j], point);  //求距离，并更新距离矩阵
-                disList[j][i] = dis;
+                double dis = TransForm.GetDistance(points_k_init[j], point);  //求距离，并更新距离矩阵
+                distance_matrix_random_init[j][i] = dis;
             }
         }
 
-        for (int i = 0; i < disList[0].length; i++) {
+        for (int i = 0; i < distance_matrix_random_init[0].length; i++) {
             if (!TransForm.Exists(i, random)) {   //如果不是聚类的中心点
                 double[] arr = new double[K];  //得到每一行的数据
                 for (int j = 0; j < K; j++) {
-                    arr[j] = disList[j][i];
+                    arr[j] = distance_matrix_random_init[j][i];
                 }
                 for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
                     if (arr[j] == TransForm.GetMin(arr)) {
@@ -103,39 +47,39 @@ public class KMeans {
                         for (int k = 0; k < dim; k++) {
                             point.SetXi(k, x[k][i]);
                         }
-                        pointLists[j].points.add(point);
+                        points_k_list[j].points.add(point);
                         break;
                     }
                 }
             }
         }
         for (int i = 0; i < K; i++) {
-            System.out.print(pointLists[i].points.size() + " ");
+            System.out.print(points_k_list[i].points.size() + " ");
         }
         System.out.println();
 
         ArrayList<Point[]> center = new ArrayList<>();   //存放每次执行的聚类中心
-        center.add(points);  //加入随机生成的中心
+        center.add(points_k_init);  //加入随机生成的中心
 
         int t = 0;
-        while (t < 20) {
-            Point[] points1 = new Point[K];    //存放聚类的中心点
+        while (t < 20) {    //循环20次进行聚类
+            Point[] points_k_center = new Point[K];    //存放聚类的中心点
             for (int i = 0; i < K; i++) {
-                points1[i] = new Point();    //重新生成聚类的质心
+                points_k_center[i] = new Point();    //重新生成聚类的质心
                 double[] sum = new double[dim];  //求和，用来后面求质心
                 for (int k = 0; k < dim; k++) {  //求每个维度坐标之和，并将其补充到质心点当中去
-                    for (int j = 0; j < pointLists[i].points.size(); j++) {
-                        sum[k] += pointLists[i].points.get(j).GetXi(k);
+                    for (int j = 0; j < points_k_list[i].points.size(); j++) {
+                        sum[k] += points_k_list[i].points.get(j).GetXi(k);
                     }
-                    points1[i].SetXi(k, sum[k] / pointLists[i].points.size());  //设置质心的值
+                    points_k_center[i].SetXi(k, sum[k] / points_k_list[i].points.size());  //设置质心的值
                 }
-                //System.out.println(points1[i].GetXi(0));
+                //System.out.println(points_k_center[i].GetXi(0));
             }
 
-            Double[][] disList1 = new Double[K][num];  //新的距离矩阵
+            Double[][] distance_matrix = new Double[K][num];  //新的距离矩阵
             for (int i = 0; i < K; i++) {
                 for (int j = 0; j < num; j++) {
-                    disList1[i][j] = 0.0;
+                    distance_matrix[i][j] = 0.0;
                 }
 
             }
@@ -145,69 +89,53 @@ public class KMeans {
                     for (int k = 0; k < dim; k++) {   //将多个纬度的值的转换为Point
                         point.SetXi(k, x[k][i]);
                     }
-                    double dis = TransForm.GetDistance(points1[j], point);  //求距离，并更新距离矩阵
-                    disList1[j][i] = dis;
+                    double dis = TransForm.GetDistance(points_k_center[j], point);  //求距离，并更新距离矩阵
+                    distance_matrix[j][i] = dis;
                 }
             }
-            center.add(points1);
+            center.add(points_k_center);
 
             for (int i = 0; i < K; i++) {   //清空上一次循环生成的列表，并重新初始化为空
-                pointLists[i] = null;
-                pointLists[i] = new PointList();
+                points_k_list[i] = null;
+                points_k_list[i] = new PointList();
             }
 
-            for (int i = 0; i < disList[0].length; i++) {
+            for (int i = 0; i < distance_matrix_random_init[0].length; i++) {
                 double[] arr = new double[K];  //保存每一行的数据，用于后面对行内求最小值
                 for (int j = 0; j < K; j++) {   //得到每一行的数据
-                    arr[j] = disList1[j][i];
+                    arr[j] = distance_matrix[j][i];
                 }
                 for (int j = 0; j < K; j++) {   //如果是最小值，将其index对应的点放入聚类结果列表
                     if (arr[j] == TransForm.GetMin(arr)) {  //判断对应的距离是否为最小值，如果是最小值，将其放入对应的类别的列表当中
                         Point point = new Point();
                         for (int k = 0; k < dim; k++) {
-                            point.SetXi(k,x[k][i]);
+                            point.SetXi(k, x[k][i]);
                         }
 
-                        pointLists[j].points.add(point);
+                        points_k_list[j].points.add(point);
                         break;
                     }
                 }
             }
             for (int i = 0; i < K; i++) {   //遍历每一个类别，打印类别的size
-                System.out.print(pointLists[i].points.size() + " ");
+                System.out.print(points_k_list[i].points.size() + " ");
             }
             System.out.println();
             t += 1;
         }
 
-        Point[] points_max_to_center = new Point[K];   //记录距离中心最远的点的集合
-        for (int i = 0; i < K; i++) {   //遍历每个类别
-            double max = 0;  //记录类别内距离最大的值
-            int index = 0;  //找到距离最大的点的索引
-            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点找到距离最大的点
-                //System.out.println(TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]));
-                if (max < TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
-                    max = TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i]);
-                }
-            }
-            for (int j = 0; j < pointLists[i].points.size(); j++) {  //遍历每个点
-                if (max == TransForm.GetDistance(pointLists[i].points.get(j), center.get(20)[i])) {
-                    index = j;
-                    break;
-                }
-            }
-            points_max_to_center[i] = pointLists[i].points.get(index);
-        }
-
-
+        //得到到各个类的最远的点到类中心的距离，用于后面导出
+        Point[] points_max_to_center = TransForm.GetMaxDistancePoints(K,points_k_list,center);
         ArrayList<Point[]> lastCenter = new ArrayList<>();
-        lastCenter.add(center.get(20));   //将最后的中心点添加入列表，用于后面的打印和导出
+        lastCenter.add(center.get(20));   //将最后的中心点添加入列表，用于后面导出
         ArrayList<Point[]> maxDistance = new ArrayList<>();
-        maxDistance.add(points_max_to_center);   //将距离最远的点放入列表，用于后面的打印和导出
-        System.out.println();
-        FileOperate.ExportFile("data_center.csv", center,dim);
-        FileOperate.ExportFile("data_lastCenter.csv", lastCenter,dim);
-        FileOperate.ExportFile("data_maxDistance.csv", maxDistance,dim);
+        maxDistance.add(points_max_to_center);   //将距离最远的点放入列表，用于后面导出
+
+        FileOperate.ExportFile("data_center.csv", center, dim);  //导出类中心的变化过程（每7行为1次）
+        FileOperate.ExportFile("data_lastCenter.csv", lastCenter, dim);  //导出最后聚类出来的中心
+        FileOperate.ExportFile("data_maxDistance.csv", maxDistance, dim);  //导出距离类中心最远的点
+        FileOperate.ExportTagFile("data_tag.csv",K,dim,points_k_list);   //导出打标签后的文件，用于实验4
+
 
     }
 }
