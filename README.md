@@ -9,6 +9,7 @@
 实验1主要采用Java语言编写，使用一个Demo的SpringBoot项目进行编写。 <br />
 实验2，由于主要涉及到的都是画图这类的，使用Python进行画图等会比较方便，因此主要采用Python语言 <br />
 实验3，算法的实现部分使用Java实现，可视化散点图、类中心类半径是java导出数据并且使用Python进行绘制的。 <br />
+实验4，逻辑回归和梯度下降使用Python语言实现，并进行可视化和运行，并写了对应的notebook和.py文件 <br />
 机器学习实验1存放路径为/Exp-1/exp1 <br />
 机器学习实验2存放路径为/Exp-1/exp1/python/ <br />
 机器学习实验3存放路径为/Exp-1/exp3 <br />
@@ -114,4 +115,18 @@ main.py，主要用于可视化类中心，类半径等
 项目的主程序--通过调用实现的方法读取文件，以及执行KMeans算法。 <br />
 
 ## 实验4
-第一问使用python进行进行画图，路径为/Exp-1/exp4/python/
+### 使用Python实现：
+路径为/Exp-1/exp4/python/  <br />
+#### 1.关于解答说明:
+第一问画sigmoid图，代码文件在main.py中 <br />
+第二、三问实现梯度下降和逻辑回归，并预测（2，6）的分类，运行结果已经放到Result当中 <br />
+LR.ipynb文件是二三问的运行过程的notebook，LR.py是notebook对应的.py文件，可以直接运行 <br />
+#### 2.关于项目说明：
+相关函数说明： <br />
+1.sigmoid(x)，用于来求得sigmoid函数，用来求预测函数model和代价函数cost <br />
+2.model(X, theta)，给出X和theta，给出y的预测值 <br />
+3.cost(X,theta,y)，给出X,theta,y，求出对应的cost <br />
+4.gradient(X, theta, y)，用来求出梯度的算法 <br />
+5.LR(data_x,data_y,theta,lr=0.1)，根据前面实现的函数，实现梯度下降、逻辑回归 <br />
+调用的包： <br />
+三件套numpy,pandas,matplotlib <br />
