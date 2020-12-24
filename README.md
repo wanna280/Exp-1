@@ -9,7 +9,7 @@
 实验1主要采用Java语言编写，使用一个Demo的SpringBoot项目进行编写。 <br />
 实验2，由于主要涉及到的都是画图这类的，使用Python进行画图等会比较方便，因此主要采用Python语言 <br />
 实验3，算法的实现部分使用Java实现，可视化散点图、类中心类半径是java导出数据并且使用Python进行绘制的。 <br />
-实验4，逻辑回归和梯度下降使用Python语言实现，并进行可视化和运行，并写了对应的notebook和.py文件 <br />
+实验4，逻辑回归和梯度下降使用Java和Python语言分别实现，并进行可视化和运行，并写了对应的notebook和.py文件和java项目 <br />
 机器学习实验1存放路径为/Exp-1/exp1 <br />
 机器学习实验2存放路径为/Exp-1/exp1/python/ <br />
 机器学习实验3存放路径为/Exp-1/exp3 <br />
@@ -130,3 +130,32 @@ LR.ipynb文件是二三问的运行过程的notebook，LR.py是notebook对应的
 5.LR(data_x,data_y,theta,lr=0.1)，根据前面实现的函数，实现梯度下降、逻辑回归 <br />
 调用的包： <br />
 三件套numpy,pandas,matplotlib <br />
+
+### 使用Java实现
+项目路径为/Exp-1/exp4/src/main/java/com/example/
+#### LR包
+LR/LR.java： <br />
+用来实现梯度下降的方法，包括Sigmod函数、预测函数Model、损失函数Cost、梯度函数Gradient、LR实现梯度下降逻辑回归。<br />
+#### util包
+util/FileOpeate.java: <br />
+实现方法取读取文件，保存到二维数组中 <br />
+util/Print.java： <br />
+实现函数方便打印一维数组，矩阵等 <br />
+util/Transform.java <br />
+实现数据之间的转换<br />
+GetColumn_i(Double[][] matrix, int column)方法获取二维数组的一个列，i传入列索引index <br />
+VectorMultiply(Double[] vector1, Double[] vector2)方法实现向量积，对应位置相乘，返回也是向量 <br />
+Multiply(Double[] vector1, Double[] vector2)方法实现向量的数量级 <br />
+Dot(Double[][] matrix1, Double[][] matrix2)实现矩阵的乘法 <br />
+T(Double[][] matrix) 方法实现矩阵的转置 <br />
+Reshape(Double[][] matrix, int rows, int columns) 方法实现矩阵的重塑<br />
+Sub(Double[] vector1, Double[] vector2)方法实现向量的相加 <br />
+Add(Double[] vector1, Double[] vector2)实现向量的相加 <br />
+Sub(Double[][] matrix1, Double[][] matrix2)方法实现矩阵的相加 <br />
+log(Double[] vector)方法求log，返回向量 <br />
+Sum(Double[][] matrix) 方法对矩阵的各个元素求和<br />
+Double Sum(Double[] vector) 方法实现对向量（数组）的各个元素之和 <br />
+TransformMatrixToVector(Double[][] matrix)方法实现将矩阵转换为向量 <br />
+TransformVectorToMatrix(Double[] vector)方法实现将向量转换为矩阵 <br />
+Double[][] Add_One_Column_AtFirst(Double[][] matrix, Double x)实现将一列数字加入矩阵的第一列 <br />
+Demo/DemoApplication.java，程序的main方法 <br />

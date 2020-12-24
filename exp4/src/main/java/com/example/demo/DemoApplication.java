@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.LR.LR;
 import com.example.demo.util.FileOperate;
 import com.example.demo.util.Print;
 import com.example.demo.util.Transform;
@@ -36,13 +37,31 @@ public class DemoApplication {
             cost[i] = 1.0;
         }
 
-        Double[][] _T = Transform.T(X);
-        Double[][] _Y = new Double[1][20];
-
-        ArrayList<Double[][]> list = Transform.LR(X,Y,theta,epochs,lr,cost);
+        ArrayList<Double[][]> list = LR.LR(X, Y, theta, epochs, lr, cost);
         Print.PrintMatrix(list.get(0));
-        Print.PrintVector(cost,60);
+        Print.PrintVector(cost, 40);  //从10000个数据中打印前40个
 
+        ArrayList<Double> class_1 = new ArrayList<Double>();
+        ArrayList<Double> class_0 = new ArrayList<Double>();
+        Double[][] predict = LR.Model(X, list.get(0));
+        for (int i = 0; i < predict.length; i++) {
+            for (int j = 0; j < predict[0].length; j++) {
+                if (predict[i][j] > 0.5) {
+                    class_1.add(predict[i][j]);
+                } else {
+                    class_0.add(predict[i][j]);
+                }
+            }
+        }
+        //Print.PrintMatrix(predict);
+        System.out.println("1类中的数量有：" + class_1.size());
+        System.out.println("0类中的数量有：" + class_0.size());
+
+
+        Double[][] X1 = new Double[][]{{1.0, 2.0, 6.0}};
+        Double[][] pred = LR.Model(X1, list.get(0));
+        int class_flag = pred[0][0] > 0.5 ? 1 : 0;
+        System.out.println("预测点(2,6)所在分类为" + class_flag);
 
     }
 
